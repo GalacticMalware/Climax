@@ -26,7 +26,7 @@
         
         </v-list-tile>
          <v-list-tile
-         @click="instalacion = true"
+         @click="instalacion = true, e1=1"
         >
         <v-list-tile-title >
           <v-icon>stay_primary_portrait</v-icon> Instalar
@@ -136,7 +136,9 @@
           class="mb-5"
           color="grey lighten-1"
           height="200px"
-        ></v-card>
+        >
+        <img class="" style="height:200px; width:100%;" src="/img/pro3.jpeg">
+        </v-card>
 
         <v-btn
           color="primary"
@@ -153,7 +155,9 @@
           class="mb-5"
           color="grey lighten-1"
           height="200px"
-        ></v-card>
+        >
+         <img class="" style="height:200px; width:100%;" src="/img/pro1.jpeg">
+        </v-card>
 
         <v-btn
           color="primary"
@@ -170,15 +174,10 @@
           class="mb-5"
           color="grey lighten-1"
           height="200px"
-        ></v-card>
-
-        <v-btn
-          color="primary"
-          @click="e1 = 1"
         >
-          Continuar
-        </v-btn>
-
+         <img class="" style="height:200px; width:100%;" src="/img/pro2.jpeg">
+        </v-card>
+        
         <v-btn color="error" @click="instalacion=false ">Salir</v-btn>
       </v-stepper-content>
     </v-stepper-items>

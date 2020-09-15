@@ -10980,6 +10980,16 @@ a.text-dark:focus {
   font-size: 200px;
 }
 
+.img {
+  width: 450px;
+}
+
+@media (max-width: 566px) {
+  .img {
+    width: 250;
+  }
+}
+
 @media (max-width: 800px) {
   .tamano {
     width: auto;

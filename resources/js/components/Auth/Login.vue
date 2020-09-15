@@ -107,6 +107,21 @@
     </v-card>
     
     </v-dialog>
+  
+    <v-snackbar
+      v-model="NotificacionError"
+      :multi-line="true"
+      :right="true"
+      :timeout="3000"
+      :top="true"
+      color="error"
+    >
+      <v-icon normal color="white" left>report_problem</v-icon>
+      <font size="3">{{textError}}</font>
+      <v-btn flat @click="NotificacionError = false">
+        <v-icon color="white">cancel</v-icon>
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 <script>
@@ -123,6 +138,8 @@ export default {
       email: "",
       password: "",
     },
+    NotificacionError: false,
+    textError: "",
     activo:false,
     dataError: "",
     error: false,
@@ -155,8 +172,10 @@ export default {
           //this.$router.push({ path: "/menu" });
         })
         .catch((error) => {
-          /* this.loading = false
-            this.$store.commit("loginFailed", { error });
+           this.loading = false
+           this.textError = "Contraseña o correo erronea "
+           this.NotificacionError = true
+           /* this.$store.commit("loginFailed", { error });
             
             this.dataError = "Contraseña o email erroneo";
             this.error = true;*/

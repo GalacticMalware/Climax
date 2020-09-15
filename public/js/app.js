@@ -2046,6 +2046,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2061,6 +2076,8 @@ __webpack_require__.r(__webpack_exports__);
         email: "",
         password: ""
       },
+      NotificacionError: false,
+      textError: "",
       activo: false,
       dataError: "",
       error: false,
@@ -2092,11 +2109,13 @@ __webpack_require__.r(__webpack_exports__);
         //this.$store.commit("loginSuccess", res.data);
         //this.$router.push({ path: "/menu" });
       })["catch"](function (error) {
-        /* this.loading = false
-          this.$store.commit("loginFailed", { error });
-          
-          this.dataError = "Contraseña o email erroneo";
-          this.error = true;*/
+        _this.loading = false;
+        _this.textError = "Contraseña o correo erronea ";
+        _this.NotificacionError = true;
+        /* this.$store.commit("loginFailed", { error });
+         
+         this.dataError = "Contraseña o email erroneo";
+         this.error = true;*/
       });
     },
     clear: function clear() {// this.$refs.form.reset();
@@ -2838,7 +2857,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
 //
 //
 //
@@ -39135,6 +39153,48 @@ var render = function() {
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: {
+            "multi-line": true,
+            right: true,
+            timeout: 3000,
+            top: true,
+            color: "error"
+          },
+          model: {
+            value: _vm.NotificacionError,
+            callback: function($$v) {
+              _vm.NotificacionError = $$v
+            },
+            expression: "NotificacionError"
+          }
+        },
+        [
+          _c("v-icon", { attrs: { normal: "", color: "white", left: "" } }, [
+            _vm._v("report_problem")
+          ]),
+          _vm._v(" "),
+          _c("font", { attrs: { size: "3" } }, [_vm._v(_vm._s(_vm.textError))]),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              attrs: { flat: "" },
+              on: {
+                click: function($event) {
+                  _vm.NotificacionError = false
+                }
+              }
+            },
+            [_c("v-icon", { attrs: { color: "white" } }, [_vm._v("cancel")])],
+            1
+          )
+        ],
+        1
       )
     ],
     1
@@ -40662,7 +40722,7 @@ var render = function() {
                             {
                               on: {
                                 click: function($event) {
-                                  _vm.instalacion = true
+                                  ;(_vm.instalacion = true), (_vm.e1 = 1)
                                 }
                               }
                             },
@@ -40991,10 +41051,22 @@ var render = function() {
                         "v-stepper-content",
                         { attrs: { step: "1" } },
                         [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "mb-5",
+                              attrs: {
+                                color: "grey lighten-1",
+                                height: "200px"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticStyle: { height: "200px", width: "100%" },
+                                attrs: { src: "/img/pro3.jpeg" }
+                              })
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "v-btn",
@@ -41029,10 +41101,22 @@ var render = function() {
                         "v-stepper-content",
                         { attrs: { step: "2" } },
                         [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
+                          _c(
+                            "v-card",
+                            {
+                              staticClass: "mb-5",
+                              attrs: {
+                                color: "grey lighten-1",
+                                height: "200px"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticStyle: { height: "200px", width: "100%" },
+                                attrs: { src: "/img/pro1.jpeg" }
+                              })
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "v-btn",
@@ -41067,22 +41151,21 @@ var render = function() {
                         "v-stepper-content",
                         { attrs: { step: "3" } },
                         [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
-                          _vm._v(" "),
                           _c(
-                            "v-btn",
+                            "v-card",
                             {
-                              attrs: { color: "primary" },
-                              on: {
-                                click: function($event) {
-                                  _vm.e1 = 1
-                                }
+                              staticClass: "mb-5",
+                              attrs: {
+                                color: "grey lighten-1",
+                                height: "200px"
                               }
                             },
-                            [_vm._v("\n          Continuar\n        ")]
+                            [
+                              _c("img", {
+                                staticStyle: { height: "200px", width: "100%" },
+                                attrs: { src: "/img/pro2.jpeg" }
+                              })
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
