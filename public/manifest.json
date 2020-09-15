@@ -10,7 +10,7 @@
     "background_color": "#fff",
     "icons": [
       {
-        "src": "/img/temporada.svg", 
+        "src": "/img/temporada.png", 
         "sizes": "48x48", 
         "type": "image/png" 
       }
