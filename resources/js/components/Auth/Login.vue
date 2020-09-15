@@ -1,4 +1,4 @@
-<template  v-on:keyup.enter="submit" v-v-if="dialog == false">
+<template  v-on:keyup.enter="submit" v-v-if="dialog == false"  data-app="true">
   <div>
     <v-parallax
       dark
@@ -33,12 +33,12 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="cyan" dark :large="true" :loading="loading" block @click="submit">ENTRAR</v-btn>
+              <v-btn color="cyan" dark :large="true" :loading="loading" :disabled="activo" block @click="submit">ENTRAR</v-btn>
               <br />
             </v-card-actions>
             <h5 class="py-3">
               Aun no tienes una cuenta?
-              <v-btn @click="dialogRegistro=true">Registrate</v-btn>
+              <v-btn flat @click="dialogRegistro=true">Registrate</v-btn>
             </h5>
           </v-card>
         </div>
@@ -110,10 +110,9 @@
   </div>
 </template>
 <script>
-//import { login } from "../../helpers/auth";
+
 import { login } from "../../Services/authenticate";
 import registro from "./Registro";
-import { timeout } from "q";
 export default {
   components: { registro },
   mounted() {},
@@ -124,9 +123,8 @@ export default {
       email: "",
       password: "",
     },
-
+    activo:false,
     dataError: "",
-    timeout: 4000,
     error: false,
     valid: true,
     

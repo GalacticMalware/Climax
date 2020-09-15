@@ -14,15 +14,15 @@
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">{{datos.name}}</h3>
+            <h3 class="headline mb-0">{{datos[0].name}}</h3>
           </div>
         </v-card-title>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <font><v-icon>brightness_low</v-icon>{{datos.main.temp}} Temperatura</font><v-spacer></v-spacer>
-          <font><v-icon>brightness_low</v-icon>{{datos.main.temp_min}} Temperatura minima</font><v-spacer></v-spacer>
-          <font><v-icon>brightness_low</v-icon>{{datos.main.temp_max}} Temperatura maxima</font><v-spacer></v-spacer>
+          <font><v-icon>brightness_low</v-icon>{{datos[0].main.temp}} Temperatura</font><v-spacer></v-spacer>
+          <font><v-icon>brightness_low</v-icon>{{datos[0].main.temp_min}} Temperatura minima</font><v-spacer></v-spacer>
+          <font><v-icon>brightness_low</v-icon>{{datos[0].main.temp_max}} Temperatura maxima</font><v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -40,13 +40,12 @@
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">{{datos.name}}</h3>
+            <h3 class="headline mb-0">{{datos}}</h3>
           </div>
         </v-card-title>
 
         <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
+          Prueba data
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -63,7 +62,9 @@ export default {
   components: {},
     data(){
       return{
-        datos:''
+        datos:[{name:'',
+        main:{temp:'',temp_max:'',temp_min:''}
+        }],
       }
     },
     mounted() {
@@ -72,8 +73,11 @@ export default {
       url: "http://127.0.0.1:8000/datosInicio",
     })
       .then((res) => {
-        console.log(res.data.main.temp)
-        this.datos = res.data;
+        
+        this.datos[0].name = res.data.name
+        this.datos[0].main.temp = res.data.main.temp
+        this.datos[0].main.temp_min = res.data.main.temp_min
+        this.datos[0].main.temp_max = res.data.main.temp_max
       })
       .catch((err) => {
         console.log(err)

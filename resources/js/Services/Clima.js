@@ -15,7 +15,32 @@ export function datosClima() {
     })
 }
 
-export function BusquedaApi(pais){
- 
-      
+export function imagenUp(files){
+    console.log(files)
+    return new Promise((res,reject)=>{
+        axios.post('/imagenFile',{
+            'imagen':file
+        }).then(response=>{
+            console.log(response)
+            res(response)
+        }).catch(err =>{
+            console.log(err)
+            reject(err)
+        })
+    })
 }
+
+
+export function auth() {
+    //console.log(credentials)
+    return new Promise((res, reject) => {
+        axios.get('/autendicado')
+            .then((response) => {
+                res(response);
+            })
+            .catch((err) => {
+                reject(err);
+            })
+    })
+}
+

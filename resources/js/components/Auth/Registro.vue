@@ -1,4 +1,4 @@
-<template v-on:keyup.enter="submit">
+<template v-on:keyup.enter="submit"  data-app="true">
   <div class="text-xs-center">
     <v-form class="white--text">
       <v-flex>

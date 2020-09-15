@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-container grid-list-lg text-lg-center>
     <v-layout row wrap>
       
@@ -96,16 +97,52 @@
         </v-slide-y-transition>
       </v-card> 
       </v-flex>
+
+      <v-flex xs12 md6 lg4 >
+        <v-card height="200px">
+        <v-btn style="margin-top:60px;" fab dark large color="primary" @click="dialogFoto=true"><v-icon>add_photo_alternate</v-icon></v-btn>
+        </v-card>
+      </v-flex>
       
     </v-layout>
+
+<div class="text-xs-center">
+    <v-dialog
+      v-model="dialogFoto"
+      width="500"
+      height="500"
+    >
+      <v-card>
+    <SubirFoto></SubirFoto>
+    <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            
+            @click="dialogFoto = false"
+          >
+            Publicar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+</div>
+
   </v-container>
+  </div>
 </template>
 <script>
+import SubirFoto from './FormularioFoto'
 export default {
+  components:{SubirFoto},
     data(){
         return{
+            dialogFoto: '',
             show:false
         }
-    }
+    },
+    methods: {
+     
+    },
 }
 </script>

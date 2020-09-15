@@ -1,16 +1,46 @@
 <template>
   <v-app id="inspire">
     <v-toolbar style dark fixed app clipped-right>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon v-show="!ACtivarApp" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title style class="white--text">Climax</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-title style class="white--text">
+
+<v-layout >
+         <v-menu offset-y>
+      <template v-slot:activator="{ on }">
+        <v-btn
+          flat icon
+          v-on="on"
+        >
+          <v-icon>mobile_screen_share</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-tile
+        >
+             <v-switch
+              v-model="ACtivarApp"
+              :label="`Modolo App: ${SwitchApp}`"
+              ></v-switch>
         
+        </v-list-tile>
+         <v-list-tile
+         @click="instalacion = true"
+        >
+        <v-list-tile-title >
+          <v-icon>stay_primary_portrait</v-icon> Instalar
+        </v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+
         <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn
           flat icon
           v-on="on"
+          
         >
           <v-icon>account_circle</v-icon>
         </v-btn>
@@ -23,6 +53,7 @@
         </v-list-tile>
       </v-list>
     </v-menu>
+</v-layout>
       </v-toolbar-title>
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" fixed app>
@@ -48,7 +79,7 @@
       </v-img>
 
 
-      <v-list dense>
+      <v-list dense >
         <v-list-tile @click="boton= true" router-link :to="{ path: '/' }" class="text-decoration-none">
           <v-list-tile-action>
             <v-icon>home</v-icon>
@@ -83,6 +114,114 @@
     <v-content>
       <router-view></router-view>
     </v-content>
+
+    <v-dialog width="500" v-model="instalacion">
+      <v-card >
+    <v-stepper v-model="e1">
+    <v-stepper-header>
+      <v-stepper-step :complete="e1 > 1" step="1">Paso 1</v-stepper-step>
+
+      <v-divider></v-divider>
+
+      <v-stepper-step :complete="e1 > 2" step="2">Paso 2</v-stepper-step>
+
+      <v-divider></v-divider>
+
+      <v-stepper-step step="3">Paso 3</v-stepper-step>
+    </v-stepper-header>
+
+    <v-stepper-items>
+      <v-stepper-content step="1">
+        <v-card
+          class="mb-5"
+          color="grey lighten-1"
+          height="200px"
+        ></v-card>
+
+        <v-btn
+          color="primary"
+          @click="e1 = 2"
+        >
+          Continuar
+        </v-btn>
+
+       <v-btn color="error" @click="instalacion=false ">Salir</v-btn>
+      </v-stepper-content>
+
+      <v-stepper-content step="2">
+        <v-card
+          class="mb-5"
+          color="grey lighten-1"
+          height="200px"
+        ></v-card>
+
+        <v-btn
+          color="primary"
+          @click="e1 = 3"
+        >
+          Continuar
+        </v-btn>
+
+        <v-btn color="error" @click="instalacion=false ">Salir</v-btn>
+      </v-stepper-content>
+
+      <v-stepper-content step="3">
+        <v-card
+          class="mb-5"
+          color="grey lighten-1"
+          height="200px"
+        ></v-card>
+
+        <v-btn
+          color="primary"
+          @click="e1 = 1"
+        >
+          Continuar
+        </v-btn>
+
+        <v-btn color="error" @click="instalacion=false ">Salir</v-btn>
+      </v-stepper-content>
+    </v-stepper-items>
+  </v-stepper>
+      </v-card>
+    </v-dialog>
+
+
+
+<template v-if="ACtivarApp">
+     <v-card height="200px">
+    <v-bottom-nav
+      :active.sync="bottomNav"
+      :color="color"
+      :value="true"
+      
+      fixed app
+      dark
+      shift
+    >
+      <v-btn dark router-link :to="{ path: '/' }" class="text-decoration-none">
+        <span>Inicio</span>
+        <v-icon>home</v-icon>
+      </v-btn>
+
+      <v-btn dark router-link :to="{ path: '/publicaciones' }" class="text-decoration-none">
+        <span>Publicaciones</span>
+        <v-icon>collections</v-icon>
+      </v-btn>
+
+      <v-btn dark router-link :to="{ path: '/clima' }" class="text-decoration-none">
+        <span>Clima</span>
+        <v-icon>flare</v-icon>
+      </v-btn>
+
+      <v-btn dark class="text-decoration-none">
+        <span>Perfil</span>
+        <v-icon>account_circle</v-icon>
+      </v-btn>
+    </v-bottom-nav>
+  </v-card>
+</template>
+  
   </v-app>
 </template>
 
@@ -91,15 +230,31 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      e1:0,
+      bottomNav: 0,
+      ACtivarApp:false,
       boton: false,
       drawer: null,
       drawerRight: null,
       right: false,
       left: false,
-      usuarioNombre:''
+      usuarioNombre:'',
+      instalacion:false,
     }
-
-  },mounted() {
+  },
+  computed: {
+    color () {
+        switch (this.bottomNav) {
+          case 0: return 'blue-grey'
+          case 1: return 'teal'
+          case 2: return 'brown'
+          case 3: return 'primary'
+        }
+      },
+      SwitchApp(){
+        return this.ACtivarApp === false ? " ACTIVADO" : " DESACTIVADO";
+      }
+    },mounted() {
     axios({
       method: "GET",
       url: "http://127.0.0.1:8000/usuarioNombre",
@@ -120,7 +275,8 @@ export default {
       url: "http://127.0.0.1:8000/logout",
     })
       .then((res) => {
-        document.location.reload(true);
+        document.location.href='/'
+        //document.location.reload(true);
       })
       .catch((err) => {
       });
