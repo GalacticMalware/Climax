@@ -6,12 +6,12 @@
     "display": "standalone",
     "orientation":"portrait",
     "lang":"es-MX",
-    "theme_color": "#4054a8",
+    "theme_color": "#fff",
     "background_color": "#fff",
     "icons": [
       {
         "src": "/img/temporada.svg", 
-        "sizes": "480x480", 
+        "sizes": "48x48", 
         "type": "image/png" 
       }
     ]
