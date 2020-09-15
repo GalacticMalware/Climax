@@ -8,7 +8,7 @@ const CACHE_NAME = 'v1_cache_climax',
     'https://fonts.googleapis.com/css?family=Raleway:400,700',
     './style.css',
     './script.js',
-    './img/icono.png'
+    './img/temporada.png'
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
