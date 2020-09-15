@@ -11,7 +11,7 @@
     "icons": [
       {
         "src": "/img/temporada.png", 
-        "sizes": "48x48", 
+        "sizes": "64x64", 
         "type": "image/png" 
       }
     ]
